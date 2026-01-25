@@ -1,16 +1,35 @@
 # Get Together Preschool - Static Website
 
-This repository contains a static copy of the Get Together Preschool website (https://gettogetherpreschool.com/) for deployment to GitHub Pages.
+This repository contains a clean, multi-page static HTML website for Get Together Preschool, deployed to GitHub Pages.
 
 ## Structure
 
 ```
 docs/
-├── index.html          # Main HTML file
-├── images/             # All image assets
-├── _next/              # Next.js static assets (CSS, JS, fonts)
-└── .nojekyll          # Tells GitHub Pages not to use Jekyll
+├── css/
+│   └── site.css        # Consolidated stylesheet
+├── fonts/
+│   └── *.woff2         # Web font files
+├── images/             # All image assets (16 images)
+├── index.html          # Home page
+├── about.html          # Program philosophy
+├── qualifications.html # Teacher credentials
+├── gallery.html        # Photo gallery
+├── programs.html       # Daily schedule & menu
+├── contact.html        # Contact info & map
+├── logo.png            # Site logo/favicon
+├── .nojekyll          # Tells GitHub Pages not to use Jekyll
+└── CNAME              # Custom domain configuration
 ```
+
+## Features
+
+- **6 clean HTML pages** with semantic markup
+- **Zero JavaScript** - pure HTML & CSS (except Google Maps iframe)
+- **Single CSS file** - consolidated and organized
+- **Organized assets** - separate folders for CSS, fonts, and images
+- **Fully responsive** - works on mobile, tablet, and desktop
+- **Fast loading** - no JavaScript frameworks, just static content
 
 ## Deploying to GitHub Pages
 
@@ -60,13 +79,15 @@ docs/
    - Branch: `gh-pages`
    - Folder: `/ (root)`
 
-## Custom Domain (Optional)
+## Custom Domain
 
-If you want to use a custom domain (e.g., gettogetherpreschool.com):
+The site is configured to use the custom domain `gettogetherpreschool.com` via the `CNAME` file.
 
-1. Add a `CNAME` file to the `docs` directory:
+To use a different custom domain:
+
+1. Update the `CNAME` file:
    ```bash
-   echo "gettogetherpreschool.com" > docs/CNAME
+   echo "yourdomain.com" > docs/CNAME
    ```
 
 2. Configure your DNS settings:
@@ -81,7 +102,7 @@ If you want to use a custom domain (e.g., gettogetherpreschool.com):
 
 ## Local Testing
 
-To test the site locally, you can use any static file server:
+To test the site locally, use any static file server:
 
 ```bash
 # Using Python 3
@@ -99,19 +120,62 @@ php -S localhost:8000
 
 Then open http://localhost:8000 in your browser.
 
-## Updating the Site
+## Making Changes
 
-To re-crawl and update the site from the live version:
+### First Time Setup
 
+Install dependencies:
 ```bash
-node download-assets.js
+npm install
 ```
 
-This will download the latest version of all assets from https://gettogetherpreschool.com/
+### Editing Content
+
+1. Open the HTML file you want to edit (e.g., `docs/about.html`)
+2. Make your changes to the content
+3. Save and commit:
+   ```bash
+   git add docs/
+   git commit -m "Update content"
+   git push
+   ```
+
+### Editing Styles
+
+This site uses Tailwind CSS with a build process to keep the CSS file small.
+
+1. Edit HTML classes directly in `docs/*.html` files
+2. For custom CSS, edit `src/input.css`
+3. Rebuild the CSS:
+   ```bash
+   npm run build:css
+   ```
+4. Commit and push the changes
+
+To watch for changes and auto-rebuild:
+```bash
+npm run watch:css
+```
+
+### Adding Images
+
+1. Add image files to `docs/images/`
+2. Reference them in HTML with `./images/filename.jpg`
+3. Commit and push
 
 ## Notes
 
-- The site is a static snapshot and won't receive automatic updates from the original site
-- All assets are self-contained in the `docs` folder
-- The `.nojekyll` file prevents GitHub Pages from processing the site with Jekyll
-- The original site is a Next.js application, but this version is purely static HTML/CSS/JS
+- **Tailwind CSS** - optimized build process generates minimal CSS (~16KB)
+- **No JavaScript dependencies** - fast, secure, and accessible
+- **Self-contained** - all assets are in the `docs` folder
+- **Easy to maintain** - clean, readable HTML with utility classes
+- **SEO optimized** - each page has unique title and meta description
+- **GitHub Pages ready** - `.nojekyll` prevents Jekyll processing
+
+## Browser Support
+
+The site uses modern CSS (Tailwind utility classes) and works in all modern browsers:
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)

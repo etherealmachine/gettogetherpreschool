@@ -1,0 +1,12 @@
+{
+  "name": "gettogetherpreschool",
+  "version": "1.0.0",
+  "description": "Get Together Preschool static website",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./docs/css/site.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./docs/css/site.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
