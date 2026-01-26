@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .font-kaiti {
+    font-family: 'Kaiti', 'KaiTi', 'Kaiti SC', 'STKaiti', 'Microsoft KaiTi', 'Adobe Kaiti Std R', serif;
+  }
+}
