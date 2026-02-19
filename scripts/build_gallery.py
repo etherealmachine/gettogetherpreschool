@@ -4,7 +4,8 @@ Build the photo gallery page from images in docs/images.
 
 1. Converts any IMG_* HEIC files in docs/images to JPEG and removes the originals.
    (Uses Pillow + pillow-heif; install with: pip install -r requirements.txt)
-2. Regenerates docs/gallery.html with all gallery images (jpeg/jpg/png, excluding logo).
+2. Downsamples gallery images to max width 2000px (keeps aspect ratio).
+3. Regenerates docs/gallery.html with all gallery images (jpeg/jpg/png, excluding logo).
 
 Usage:
   pip install -r requirements.txt
@@ -24,6 +25,9 @@ GALLERY_HTML = REPO_ROOT / "docs" / "gallery.html"
 
 # Gallery excludes (filenames that are not photos)
 EXCLUDE = {"logo.png"}
+
+# Max width for gallery images (downsampled in place)
+MAX_WIDTH = 2000
 
 # Image extensions to include in gallery (after any conversion)
 GALLERY_EXTENSIONS = {".jpeg", ".jpg", ".png"}
@@ -67,6 +71,43 @@ def convert_heic_to_jpeg(images_dir: Path) -> list[str]:
         except Exception as e:
             print(f"Warning: could not convert {path.name}: {e}", file=sys.stderr)
     return converted
+
+
+def downsample_gallery_images(images_dir: Path) -> int:
+    """Resize any gallery image wider than MAX_WIDTH to max width (aspect ratio preserved). Returns count resized."""
+    try:
+        from PIL import Image
+    except ImportError:
+        print(
+            "Error: Downsampling requires Pillow. Run: pip install -r requirements.txt",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    resized = 0
+    for path in images_dir.iterdir():
+        if not path.is_file() or path.name in EXCLUDE:
+            continue
+        if path.suffix.lower() not in {".jpeg", ".jpg", ".png"}:
+            continue
+        try:
+            img = Image.open(path)
+            if img.width <= MAX_WIDTH:
+                continue
+            ratio = MAX_WIDTH / img.width
+            new_size = (MAX_WIDTH, int(img.height * ratio))
+            img = img.resize(new_size, Image.Resampling.LANCZOS)
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
+            elif img.mode != "RGB":
+                img = img.convert("RGB")
+            # Save as JPEG for consistency and smaller size; PNG stays PNG if we want to preserve transparency
+            save_kw = {"quality": 92} if path.suffix.lower() in (".jpeg", ".jpg") else {}
+            img.save(path, "JPEG" if path.suffix.lower() in (".jpeg", ".jpg") else "PNG", **save_kw)
+            resized += 1
+        except Exception as e:
+            print(f"Warning: could not downsample {path.name}: {e}", file=sys.stderr)
+    return resized
 
 
 def gallery_image_filenames(images_dir: Path) -> list[str]:
@@ -203,6 +244,10 @@ def main() -> None:
         converted = convert_heic_to_jpeg(IMAGES_DIR)
         if converted:
             print(f"Converted {len(converted)} HEIC(s) to JPEG: {', '.join(converted)}")
+
+    resized = downsample_gallery_images(IMAGES_DIR)
+    if resized:
+        print(f"Downsampled {resized} image(s) to max width {MAX_WIDTH}px.")
 
     names = gallery_image_filenames(IMAGES_DIR)
     if not names:
