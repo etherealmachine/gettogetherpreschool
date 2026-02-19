@@ -5,7 +5,7 @@ Build the photo gallery page from images in docs/images.
 1. Converts any IMG_* HEIC files in docs/images to JPEG and removes the originals.
    (Uses Pillow + pillow-heif; install with: pip install -r requirements.txt)
 2. Downsamples gallery images to max width 2000px (keeps aspect ratio).
-3. Regenerates docs/gallery.html with all gallery images (jpeg/jpg/png, excluding logo).
+3. Regenerates docs/gallery.html and updates the gallery-images section in docs/index.html.
 
 Usage:
   pip install -r requirements.txt
@@ -15,6 +15,7 @@ Usage:
 """
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -22,6 +23,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 IMAGES_DIR = REPO_ROOT / "docs" / "images"
 GALLERY_HTML = REPO_ROOT / "docs" / "gallery.html"
+INDEX_HTML = REPO_ROOT / "docs" / "index.html"
 
 # Gallery excludes (filenames that are not photos)
 EXCLUDE = {"logo.png"}
@@ -123,13 +125,55 @@ def gallery_image_filenames(images_dir: Path) -> list[str]:
     return sorted(names)
 
 
+def _alt_for_filename(name: str) -> str:
+    """Friendly alt text from filename."""
+    base = Path(name).stem
+    return "Get Together Preschool" if base.startswith("IMG_") else f"Get Together Preschool {base}"
+
+
+def update_index_gallery(image_filenames: list[str]) -> None:
+    """Replace the gallery-images section and dots in docs/index.html with the given image list."""
+    if not image_filenames:
+        return
+    content = INDEX_HTML.read_text(encoding="utf-8")
+
+    # Build gallery-images div inner HTML (first image has class including "active")
+    img_lines = []
+    for i, name in enumerate(image_filenames):
+        alt = _alt_for_filename(name)
+        cls = "w-full h-80 md:h-96 object-cover object-center active" if i == 0 else "w-full h-80 md:h-96 object-cover object-center"
+        img_lines.append(f'                <img src="./images/{name}" alt="{alt}" class="{cls}">')
+    gallery_images_inner = "\n".join(img_lines)
+
+    # Build dots div inner HTML
+    dot_lines = []
+    for i in range(len(image_filenames)):
+        cls = "gallery-dot active" if i == 0 else "gallery-dot"
+        dot_lines.append(f'              <button class="{cls}" data-index="{i}"></button>')
+    dots_inner = "\n".join(dot_lines)
+
+    # Replace gallery-images div content
+    content = re.sub(
+        r'(<div class="gallery-images">)\n.*?(\n              </div>\n            </div>)',
+        r"\1\n" + gallery_images_inner + r"\2",
+        content,
+        flags=re.DOTALL,
+    )
+    # Replace dots div content
+    content = re.sub(
+        r'(<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">)\n.*?(\n            </div>\n          </div>)',
+        r"\1\n" + dots_inner + r"\2",
+        content,
+        flags=re.DOTALL,
+    )
+    INDEX_HTML.write_text(content, encoding="utf-8")
+
+
 def generate_gallery_html(image_filenames: list[str]) -> str:
     """Generate full gallery.html content with the given image filenames."""
     grid_items = []
     for name in image_filenames:
-        # Friendly alt from filename (e.g. IMG_3818.jpeg -> Get Together Preschool photo)
-        base = Path(name).stem
-        alt = f"Get Together Preschool" if base.startswith("IMG_") else f"Get Together Preschool {base}"
+        alt = _alt_for_filename(name)
         grid_items.append(
             f"""          <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition cursor-pointer">
             <img src="./images/{name}" alt="{alt}" class="w-full h-60 object-cover hover:scale-105 transition duration-300">
@@ -256,6 +300,10 @@ def main() -> None:
     html = generate_gallery_html(names)
     GALLERY_HTML.write_text(html, encoding="utf-8")
     print(f"Wrote {GALLERY_HTML} with {len(names)} image(s).")
+
+    if INDEX_HTML.is_file():
+        update_index_gallery(names)
+        print(f"Updated gallery section in {INDEX_HTML}.")
 
 
 if __name__ == "__main__":
