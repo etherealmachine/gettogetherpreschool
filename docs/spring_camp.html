@@ -8,6 +8,7 @@
   <link rel="icon" href="./images/logo.png">
   <link rel="apple-touch-icon" href="./images/logo.png">
   <link rel="stylesheet" href="./css/site.css">
+  <script src="./javascript/cjk-font-toggle.js"></script>
 </head>
 <body class="font-sans antialiased">
   <nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-border">
@@ -26,6 +27,7 @@
         <a href="./gallery.html" class="text-sm font-medium text-foreground hover:text-primary transition">Gallery</a>
         <a href="./contact.html" class="text-sm font-medium text-foreground hover:text-primary transition">Contact</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZyobWI_UZaaKOGK7GeJuBL_lvFxqHn-UKP5wAmZ3w5M-IwQ/viewform" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-orange-500 hover:text-orange-600 transition">Apply</a>
+        <button type="button" id="cjk-font-toggle" class="hidden md:inline-block font-kaiti text-sm text-foreground/80 hover:bg-primary/10 hover:text-primary px-1.5 py-0.5 rounded transition" aria-label="Switch Chinese font">繁</button>
       </div>
       <button id="mobile-menu-btn" class="md:hidden p-2 text-primary hover:bg-primary/10 rounded-lg transition" aria-label="Toggle menu">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -43,6 +45,7 @@
         <a href="./gallery.html" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Gallery</a>
         <a href="./contact.html" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Contact</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZyobWI_UZaaKOGK7GeJuBL_lvFxqHn-UKP5wAmZ3w5M-IwQ/viewform" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-orange-500 px-4 py-3 rounded-lg hover:bg-orange-50 hover:text-orange-600 transition">Apply</a>
+        <button type="button" id="cjk-font-toggle-mobile" class="font-kaiti text-sm text-foreground/80 hover:bg-primary/10 hover:text-primary px-4 py-2 rounded-lg transition" aria-label="Switch Chinese font">繁</button>
       </div>
     </div>
   </nav>
@@ -79,7 +82,8 @@
           </div>
           <div>
             <h3 class="text-lg font-semibold text-primary mb-1">Spring Camp Fee</h3>
-            <p class="text-foreground/90">9:00 AM – 3:30 PM: <strong>$600</strong></p>
+            <p class="text-foreground/90">Single Day M-F 9:00 AM – 3:30 PM: <strong>$120</strong></p>
+            <p class="text-foreground/90">April 6–17, M-F 9:00 AM – 3:30 PM: <strong>$600</strong></p>
           </div>
           <div>
             <h3 class="text-lg font-semibold text-primary mb-1">Extended Care (Optional)</h3>
@@ -149,6 +153,31 @@
               </tr>
               <tr class="hover:bg-green-50/50 transition">
                 <td class="px-4 py-4 text-foreground font-medium">Friday 4/10/2026</td>
+                <td class="px-4 py-4 text-foreground/90">Master Chef</td>
+                <td class="px-4 py-4 text-foreground/90 font-kaiti">小小厨神</td>
+              </tr>
+              <tr class="hover:bg-green-50/50 transition">
+                <td class="px-4 py-4 text-foreground font-medium">Monday 4/13/2026</td>
+                <td class="px-4 py-4 text-foreground/90">Career Finder</td>
+                <td class="px-4 py-4 text-foreground/90 font-kaiti">职业小探索</td>
+              </tr>
+              <tr class="hover:bg-green-50/50 transition">
+                <td class="px-4 py-4 text-foreground font-medium">Tuesday 4/14/2026</td>
+                <td class="px-4 py-4 text-foreground/90">Junior Artists</td>
+                <td class="px-4 py-4 text-foreground/90 font-kaiti">小小艺术家</td>
+              </tr>
+              <tr class="hover:bg-green-50/50 transition">
+                <td class="px-4 py-4 text-foreground font-medium">Wednesday 4/15/2026</td>
+                <td class="px-4 py-4 text-foreground/90">Chinese Cultures</td>
+                <td class="px-4 py-4 text-foreground/90 font-kaiti">中华文化</td>
+              </tr>
+              <tr class="hover:bg-green-50/50 transition">
+                <td class="px-4 py-4 text-foreground font-medium">Thursday 4/16/2026</td>
+                <td class="px-4 py-4 text-foreground/90">Science Exploration</td>
+                <td class="px-4 py-4 text-foreground/90 font-kaiti">科学探索</td>
+              </tr>
+              <tr class="hover:bg-green-50/50 transition">
+                <td class="px-4 py-4 text-foreground font-medium">Friday 4/17/2026</td>
                 <td class="px-4 py-4 text-foreground/90">Master Chef</td>
                 <td class="px-4 py-4 text-foreground/90 font-kaiti">小小厨神</td>
               </tr>

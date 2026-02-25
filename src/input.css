@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 @layer utilities {
+  /* Simplified Chinese (default) */
   .font-kaiti {
-    font-family: 'Kaiti', 'KaiTi', 'Kaiti SC', 'STKaiti', 'Microsoft KaiTi', 'Adobe Kaiti Std R', serif;
+    font-family: 'Kaiti', sans-serif;
+  }
+  /* Traditional Chinese when root has .font-chinese-tc */
+  html.font-chinese-tc .font-kaiti {
+    font-family: 'Kaiti TC', serif;
   }
 }

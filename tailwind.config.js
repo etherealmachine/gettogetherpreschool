@@ -3,6 +3,9 @@ module.exports = {
   content: [
     "./docs/**/*.html",
   ],
+  safelist: [
+    { pattern: /^font-chinese-tc$/ },
+  ],
   theme: {
     extend: {
       colors: {
