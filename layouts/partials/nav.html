@@ -1,0 +1,38 @@
+<nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-border">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+    <a href="{{ "/" | relURL }}" class="flex items-center gap-3 hover:opacity-80 transition">
+      <img src="{{ "images/logo.png" | relURL }}" alt="Get Together Preschool" class="h-12 w-auto">
+      <div>
+        <h1 class="text-sm font-bold text-primary">Get Together San Jose Preschool</h1>
+        <p class="text-sm text-muted-foreground font-kaiti">欢乐幼儿园</p>
+      </div>
+    </a>
+    <div class="hidden md:flex gap-8 items-center">
+      <a href="{{ "/" | relURL }}" class="text-sm font-medium {{ if .IsHome }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Home</a>
+      <a href="{{ "programs/" | relURL }}" class="text-sm font-medium {{ if or (eq .RelPermalink "/programs/") (hasPrefix .RelPermalink "/programs/") }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Programs</a>
+      <a href="{{ "spring_camp/" | relURL }}" class="text-sm font-medium {{ if or (eq .RelPermalink "/spring_camp/") (hasPrefix .RelPermalink "/spring_camp/") }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Spring Camp</a>
+      <a href="{{ "gallery/" | relURL }}" class="text-sm font-medium {{ if or (eq .RelPermalink "/gallery/") (hasPrefix .RelPermalink "/gallery/") }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Gallery</a>
+      <a href="{{ "contact/" | relURL }}" class="text-sm font-medium {{ if or (eq .RelPermalink "/contact/") (hasPrefix .RelPermalink "/contact/") }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Contact</a>
+      <a href="{{ "apply/" | relURL }}" class="text-sm font-bold text-orange-500 hover:text-orange-600 transition">Apply</a>
+      <button type="button" id="cjk-font-toggle" class="hidden md:inline-block font-kaiti text-sm text-foreground/80 hover:bg-primary/10 hover:text-primary px-1.5 py-0.5 rounded transition" aria-label="Switch Chinese font">繁</button>
+    </div>
+    <button id="mobile-menu-btn" class="md:hidden p-2 text-primary hover:bg-primary/10 rounded-lg transition" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-white">
+    <div class="px-4 py-2 flex flex-col gap-1">
+      <a href="{{ "/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Home</a>
+      <a href="{{ "programs/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Programs</a>
+      <a href="{{ "spring_camp/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Spring Camp</a>
+      <a href="{{ "gallery/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Gallery</a>
+      <a href="{{ "contact/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Contact</a>
+      <a href="{{ "apply/" | relURL }}" class="text-sm font-bold text-orange-500 px-4 py-3 rounded-lg hover:bg-orange-50 hover:text-orange-600 transition">Apply</a>
+      <button type="button" id="cjk-font-toggle-mobile" class="font-kaiti text-sm text-foreground/80 hover:bg-primary/10 hover:text-primary px-4 py-2 rounded-lg transition" aria-label="Switch Chinese font">繁</button>
+    </div>
+  </div>
+</nav>

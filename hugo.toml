@@ -1,0 +1,23 @@
+baseURL = "https://gettogetherpreschool.com/"
+languageCode = "en-us"
+publishDir = "docs"
+title = "Get Together Preschool"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "NAEYC-accredited bilingual preschool in San Jose offering nurturing early childhood education for ages 2-5."
+  phone = "(408) 908-8105"
+  email = "get2getherpreschool@gmail.com"
+  address = "3394 Zisch Dr, San Jose, CA 95118"
+  addressShort = "3394 Zisch Dr."
+  cityState = "San Jose, CA 95118"
+  license = "434417976"
+  mapsQuery = "3394+Zisch+Dr+San+Jose+CA+95118"
+  formsubmitNext = "https://gettogetherpreschool.com/thanks/"
+  springCampFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSfZyobWI_UZaaKOGK7GeJuBL_lvFxqHn-UKP5wAmZ3w5M-IwQ/viewform"
+  mapsEmbedKey = "AIzaSyC7X1PykcsHa1QAzpneZ0I0rtnsAsWXekM"
+  mapsEmbedQuery = "3394%20Zisch%20Dr%2C%20San%20Jose%2C%20CA%2095118"
+
+[outputs]
+  home = ["HTML", "RSS"]

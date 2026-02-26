@@ -1,0 +1,20 @@
+{{ define "main" }}
+<article class="py-8 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl sm:text-4xl font-bold text-foreground mb-6">{{ .Title }}</h1>
+    <div class="prose prose-lg max-w-none text-foreground">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+(function() {
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuBtn && mobileMenu) mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+})();
+</script>
+{{ end }}

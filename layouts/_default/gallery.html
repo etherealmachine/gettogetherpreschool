@@ -1,0 +1,32 @@
+{{ define "main" }}
+<section class="py-20 px-4 sm:px-6 lg:px-8 bg-yellow-50/30">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-12 text-center">Gallery</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {{ $scratch := newScratch }}
+      {{ $scratch.Set "imgs" slice }}
+      {{ range sort (readDir "static/images") "Name" }}
+        {{ if and (ne .Name "logo.png") (or (hasSuffix .Name ".jpeg") (hasSuffix .Name ".jpg") (hasSuffix .Name ".png")) }}
+          {{ $scratch.Add "imgs" .Name }}
+        {{ end }}
+      {{ end }}
+      {{ $imgs := $scratch.Get "imgs" }}
+      {{ range $imgs }}
+        <div class="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition cursor-pointer">
+          <img src="{{ (printf "images/%s" .) | relURL }}" alt="Get Together Preschool" class="w-full h-60 object-cover hover:scale-105 transition duration-300">
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+(function() {
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuBtn && mobileMenu) mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+})();
+</script>
+{{ end }}

@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./docs/**/*.html",
+    "./layouts/**/*.html",
+    "./content/**/*.md",
   ],
   safelist: [
     { pattern: /^font-chinese-tc$/ },

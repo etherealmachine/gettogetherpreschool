@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Get Together Preschool static website",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/input.css -o ./docs/css/site.css --minify",
-    "watch:css": "tailwindcss -i ./src/input.css -o ./docs/css/site.css --watch"
+    "build:css": "tailwindcss -i ./src/input.css -o ./static/css/site.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./static/css/site.css --watch",
+    "build": "npm run build:css && hugo",
+    "build:gh": "npm run build:css && hugo --destination docs",
+    "dev": "hugo server"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"

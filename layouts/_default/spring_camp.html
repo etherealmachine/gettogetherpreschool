@@ -1,0 +1,70 @@
+{{ define "main" }}
+<section class="relative bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">April 6–17, 2026</p>
+    <h1 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">GTP Spring Camp 🌸</h1>
+    <p class="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">For families who love to plan ahead, GTP Spring Camp registration is now open! Our bilingual Mandarin-English Spring Camp offers a perfect balance of continued learning and fun, hands-on activities in a nurturing environment.</p>
+    <p class="text-foreground mb-8">It's designed for children in PreK, TK, and Kindergarten to stay engaged, curious, and growing during the spring season.</p>
+    <ul class="space-y-2 text-left max-w-sm mx-auto mb-8">
+      <li class="flex items-center gap-2"><span class="text-foreground">✨</span> Support your child's learning</li>
+      <li class="flex items-center gap-2"><span class="text-foreground">✨</span> Hands-on, play-based activities</li>
+      <li class="flex items-center gap-2"><span class="text-foreground">✨</span> Warm, bilingual environment</li>
+    </ul>
+    <p class="font-semibold text-foreground mb-6">Limited spots available — reserve your child's spot today!</p>
+    <a href="{{ .Site.Params.springCampFormURL }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition shadow-lg">Register for Spring Camp</a>
+  </div>
+</section>
+<section class="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+  <div class="max-w-4xl mx-auto space-y-10">
+    <h2 class="text-2xl font-bold text-foreground text-center">Details & Registration</h2>
+    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-border space-y-6">
+      <div><h3 class="text-lg font-semibold text-foreground mb-1">Age Eligibility</h3><p class="text-foreground/90">Preschool, TK, and Kindergarten</p></div>
+      <div><h3 class="text-lg font-semibold text-foreground mb-1">Location</h3><p class="text-foreground/90"><a href="https://www.google.com/maps/search/?api=1&query={{ .Site.Params.mapsQuery }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition underline">{{ .Site.Params.address }}</a></p></div>
+      <div><h3 class="text-lg font-semibold text-foreground mb-1">Spring Camp Fee</h3><p class="text-foreground/90">Single Day M-F 9:00 AM – 3:30 PM: <strong>$120</strong></p><p class="text-foreground/90">April 6–17, M-F 9:00 AM – 3:30 PM: <strong>$600</strong></p></div>
+      <div><h3 class="text-lg font-semibold text-foreground mb-1">Extended Care (Optional)</h3><p class="text-foreground/90">8:00 AM – 9:00 AM and 3:30 PM – 5:30 PM: <strong>$100</strong></p></div>
+      <div><h3 class="text-lg font-semibold text-foreground mb-1">Discount</h3><p class="text-foreground/90">$50 off for current and former GTP families</p></div>
+      <div><h3 class="text-lg font-semibold text-foreground mb-1">Payment Due Date</h3><p class="text-foreground/90">The full camp fee is due at the time of registration submission.</p></div>
+      <div><h3 class="text-lg font-semibold text-foreground mb-1">Refund Policy</h3><ul class="text-foreground/90 list-disc pl-5 space-y-1"><li>50% refundable on or before April 1, 2026</li><li>Camp fees and extended care are non-refundable after April 1, 2026</li></ul></div>
+      <div><h3 class="text-lg font-semibold text-foreground mb-1">Payment Method</h3><p class="text-foreground/90">Zelle to <strong>@gettogetherpreschool</strong></p></div>
+      <div><h3 class="text-lg font-semibold text-foreground mb-1">Lunch Options</h3><p class="text-foreground/90 mb-2">Families are welcome to pack their child's own lunch. For added convenience, GTP offers an optional lunch program for <strong>$25 per day</strong>. Lunch includes:</p><ul class="text-foreground/90 list-disc pl-5 space-y-1"><li>Protein</li><li>Carbohydrates</li><li>Organic fruits and vegetables</li><li>Organic milk</li></ul></div>
+    </div>
+    <h2 class="text-2xl font-bold text-foreground text-center pt-4">Daily Themes</h2>
+    <div class="bg-white rounded-xl shadow-md border border-border overflow-hidden">
+      <table class="w-full">
+        <thead>
+          <tr class="bg-muted">
+<th class="px-4 py-4 text-left text-sm font-bold text-foreground uppercase tracking-wider">Date</th>
+                <th class="px-4 py-4 text-left text-sm font-bold text-foreground uppercase tracking-wider">Theme</th>
+                <th class="px-4 py-4 text-left text-sm font-bold text-foreground uppercase tracking-wider font-kaiti">主题</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-border">
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Monday 4/6/2026</td><td class="px-4 py-4 text-foreground/90">Yummy Dessert</td><td class="px-4 py-4 text-foreground/90 font-kaiti">美味甜点</td></tr>
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Tuesday 4/7/2026</td><td class="px-4 py-4 text-foreground/90">Junior Artists</td><td class="px-4 py-4 text-foreground/90 font-kaiti">小小艺术家</td></tr>
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Wednesday 4/8/2026</td><td class="px-4 py-4 text-foreground/90">Science Exploration</td><td class="px-4 py-4 text-foreground/90 font-kaiti">科学探索</td></tr>
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Thursday 4/9/2026</td><td class="px-4 py-4 text-foreground/90">Chinese Cultures</td><td class="px-4 py-4 text-foreground/90 font-kaiti">中华文化</td></tr>
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Friday 4/10/2026</td><td class="px-4 py-4 text-foreground/90">Master Chef</td><td class="px-4 py-4 text-foreground/90 font-kaiti">小小厨神</td></tr>
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Monday 4/13/2026</td><td class="px-4 py-4 text-foreground/90">Career Finder</td><td class="px-4 py-4 text-foreground/90 font-kaiti">职业小探索</td></tr>
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Tuesday 4/14/2026</td><td class="px-4 py-4 text-foreground/90">Junior Artists</td><td class="px-4 py-4 text-foreground/90 font-kaiti">小小艺术家</td></tr>
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Wednesday 4/15/2026</td><td class="px-4 py-4 text-foreground/90">Chinese Cultures</td><td class="px-4 py-4 text-foreground/90 font-kaiti">中华文化</td></tr>
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Thursday 4/16/2026</td><td class="px-4 py-4 text-foreground/90">Science Exploration</td><td class="px-4 py-4 text-foreground/90 font-kaiti">科学探索</td></tr>
+          <tr class="hover:bg-green-50/50 transition"><td class="px-4 py-4 text-foreground font-medium">Friday 4/17/2026</td><td class="px-4 py-4 text-foreground/90">Master Chef</td><td class="px-4 py-4 text-foreground/90 font-kaiti">小小厨神</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center pt-4">
+      <a href="{{ .Site.Params.springCampFormURL }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition shadow-lg">Register for Spring Camp</a>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+(function() {
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuBtn && mobileMenu) mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+})();
+</script>
+{{ end }}

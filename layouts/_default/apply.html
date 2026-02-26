@@ -1,0 +1,66 @@
+{{ define "main" }}
+<section class="py-8 px-4 sm:px-6 lg:px-8 bg-yellow-50/30">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-center">Apply Now</h2>
+    <p class="text-xl text-muted-foreground mb-12 text-center max-w-2xl mx-auto">Now accepting applications for ages 2-5. Fill out the application form below and we'll get back to you within 24 hours.</p>
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg border-2 border-primary/20">
+        <form action="https://formsubmit.co/{{ .Site.Params.email }}" method="POST">
+          <input type="hidden" name="_subject" value="New Preschool Application">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="{{ .Site.Params.formsubmitNext }}">
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="parent-name" class="block text-sm font-semibold text-foreground mb-2">Parent/Guardian Name *</label>
+              <input type="text" id="parent-name" name="Parent/Guardian Name" required class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold text-foreground mb-2">Email Address *</label>
+              <input type="email" id="email" name="Email" required class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-foreground mb-2">Phone Number *</label>
+              <input type="tel" id="phone" name="Phone" required class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label for="child-name" class="block text-sm font-semibold text-foreground mb-2">Child's Name</label>
+              <input type="text" id="child-name" name="Child's Name" class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label for="child-age" class="block text-sm font-semibold text-foreground mb-2">Child's Age/Date of Birth</label>
+              <input type="text" id="child-age" name="Child's Age/DOB" placeholder="e.g., 3 years old or 01/15/2022" class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+            <div>
+              <label for="start-date" class="block text-sm font-semibold text-foreground mb-2">Desired Start Date</label>
+              <input type="date" id="start-date" name="Desired Start Date" class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+            </div>
+          </div>
+          <div class="mb-6">
+            <label for="message" class="block text-sm font-semibold text-foreground mb-2">Additional Information or Questions</label>
+            <textarea id="message" name="Message" rows="5" placeholder="Tell us anything else you'd like us to know..." class="w-full px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-vertical"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition shadow-lg">Submit Application</button>
+        </form>
+      </div>
+    </div>
+    <div class="max-w-3xl mx-auto mt-12 text-center">
+      <p class="text-muted-foreground">Questions? <a href="{{ "contact/" | relURL }}" class="text-primary font-semibold hover:underline">Contact us</a> or call <a href="tel:{{ replace .Site.Params.phone " " "" }}" class="text-primary font-semibold hover:underline">{{ .Site.Params.phone }}</a></p>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+(function() {
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuBtn && mobileMenu) mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+})();
+</script>
+{{ end }}

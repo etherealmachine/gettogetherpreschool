@@ -1,0 +1,8 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<link rel="icon" href="{{ "images/logo.png" | relURL }}">
+<link rel="apple-touch-icon" href="{{ "images/logo.png" | relURL }}">
+<link rel="stylesheet" href="{{ "css/site.css" | relURL }}">
+<script src="{{ "javascript/cjk-font-toggle.js" | relURL }}" defer></script>
