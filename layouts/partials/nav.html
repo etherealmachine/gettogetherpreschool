@@ -11,6 +11,7 @@
       <a href="{{ "/" | relURL }}" class="text-sm font-medium {{ if .IsHome }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Home</a>
       <a href="{{ "programs/" | relURL }}" class="text-sm font-medium {{ if or (eq .RelPermalink "/programs/") (hasPrefix .RelPermalink "/programs/") }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Programs</a>
       <a href="{{ "spring_camp/" | relURL }}" class="text-sm font-medium {{ if or (eq .RelPermalink "/spring_camp/") (hasPrefix .RelPermalink "/spring_camp/") }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Spring Camp</a>
+      <a href="{{ "summer_camp/" | relURL }}" class="text-sm font-medium {{ if or (eq .RelPermalink "/summer_camp/") (hasPrefix .RelPermalink "/summer_camp/") }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Summer Camp</a>
       <a href="{{ "gallery/" | relURL }}" class="text-sm font-medium {{ if or (eq .RelPermalink "/gallery/") (hasPrefix .RelPermalink "/gallery/") }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Gallery</a>
       <a href="{{ "contact/" | relURL }}" class="text-sm font-medium {{ if or (eq .RelPermalink "/contact/") (hasPrefix .RelPermalink "/contact/") }}text-primary{{ else }}text-foreground hover:text-primary transition{{ end }}">Contact</a>
       <a href="{{ "apply/" | relURL }}" class="text-sm font-bold text-orange-500 hover:text-orange-600 transition">Apply</a>
@@ -29,6 +30,7 @@
       <a href="{{ "/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Home</a>
       <a href="{{ "programs/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Programs</a>
       <a href="{{ "spring_camp/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Spring Camp</a>
+      <a href="{{ "summer_camp/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Summer Camp</a>
       <a href="{{ "gallery/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Gallery</a>
       <a href="{{ "contact/" | relURL }}" class="text-sm font-medium text-foreground px-4 py-3 rounded-lg hover:bg-primary/10 hover:text-primary transition">Contact</a>
       <a href="{{ "apply/" | relURL }}" class="text-sm font-bold text-orange-500 px-4 py-3 rounded-lg hover:bg-orange-50 hover:text-orange-600 transition">Apply</a>

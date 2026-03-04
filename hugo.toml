@@ -16,6 +16,10 @@ disableKinds = ["taxonomy", "term"]
   mapsQuery = "3394+Zisch+Dr+San+Jose+CA+95118"
   formsubmitNext = "https://gettogetherpreschool.com/thanks/"
   springCampFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSfZyobWI_UZaaKOGK7GeJuBL_lvFxqHn-UKP5wAmZ3w5M-IwQ/viewform"
+  # Set to your Summer Camp registration form URL when available
+  summerCampFormURL = "#"
+  # Fallback when a camp page has no formURL (or has "#")
+  defaultCampFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSfZyobWI_UZaaKOGK7GeJuBL_lvFxqHn-UKP5wAmZ3w5M-IwQ/viewform"
   mapsEmbedKey = "AIzaSyC7X1PykcsHa1QAzpneZ0I0rtnsAsWXekM"
   mapsEmbedQuery = "3394%20Zisch%20Dr%2C%20San%20Jose%2C%20CA%2095118"
 

@@ -1,0 +1,78 @@
+{{ define "main" }}
+{{ $c := .Params.camp }}
+{{ $gradient := $c.heroGradient | default "green" }}
+{{ $gradientClass := "from-green-50 via-emerald-50 to-teal-50" }}
+{{ $rowHover := "hover:bg-green-50/50" }}
+{{ if eq $gradient "amber" }}
+  {{ $gradientClass = "from-amber-50 via-orange-50 to-yellow-50" }}
+  {{ $rowHover = "hover:bg-amber-50/50" }}
+{{ end }}
+<section class="relative bg-gradient-to-br {{ $gradientClass }} py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto text-center">
+    {{ with $c.dateRange }}<p class="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">{{ . }}</p>{{ end }}
+    <h1 class="text-3xl sm:text-4xl font-bold text-foreground mb-4">{{ $c.heroTitle }}</h1>
+    {{ with $c.subtitle }}<p class="text-lg text-muted-foreground mb-2 max-w-2xl mx-auto">{{ . }}</p>{{ end }}
+    <p class="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">{{ $c.lead }}</p>
+    {{ with $c.tagline }}<p class="text-foreground mb-8">{{ . }}</p>{{ end }}
+    {{ with $c.bullets }}
+    <ul class="space-y-2 text-left max-w-sm mx-auto mb-8">
+      {{ range . }}<li class="flex items-center gap-2"><span class="text-foreground">✨</span> {{ . }}</li>{{ end }}
+    </ul>
+    {{ end }}
+    <p class="font-semibold text-foreground mb-6">Limited spots{{ if $c.limitedSpotsSuffix }} {{ $c.limitedSpotsSuffix }}{{ else }} available — reserve your child's spot today!{{ end }}</p>
+    {{ $formURL := .Params.formURL }}
+    {{ if or (not $formURL) (eq (strings.TrimSpace $formURL) "") (eq $formURL "#") }}{{ $formURL = .Site.Params.defaultCampFormURL }}{{ end }}
+    {{ if not $formURL }}{{ $formURL = "apply/" | relURL }}{{ end }}
+    <a href="{{ $formURL }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition shadow-lg">{{ $c.ctaText }}</a>
+  </div>
+</section>
+<section class="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+  <div class="max-w-4xl mx-auto space-y-10">
+    <h2 class="text-2xl font-bold text-foreground text-center">Details & Registration</h2>
+    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-border space-y-6">
+      {{ range $c.details }}
+      <div>
+        <h3 class="text-lg font-semibold text-foreground mb-1">{{ .title }}</h3>
+        {{ if eq .type "location" }}
+        <p class="text-foreground/90"><a href="https://www.google.com/maps/search/?api=1&query={{ $.Site.Params.mapsQuery }}" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition underline">{{ $.Site.Params.address }}</a></p>
+        {{ else }}
+        <div class="text-foreground/90 prose prose-sm max-w-none">{{ .body | markdownify }}</div>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ if and $c.themeTableTitle $c.themeTableHeaders $c.themeTableRows }}
+    <h2 class="text-2xl font-bold text-foreground text-center pt-4">{{ $c.themeTableTitle }}</h2>
+    <div class="bg-white rounded-xl shadow-md border border-border overflow-hidden">
+      <table class="w-full">
+        <thead>
+          <tr class="bg-muted">
+            {{ range $c.themeTableHeaders }}<th class="px-4 py-4 text-left text-sm font-bold text-foreground uppercase tracking-wider {{ if eq . "主题" }}font-kaiti{{ end }}">{{ . }}</th>{{ end }}
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-border">
+          {{ range $c.themeTableRows }}
+          <tr class="{{ $rowHover }} transition">
+            {{ range $i, $cell := . }}<td class="px-4 py-4 {{ if eq $i 0 }}font-medium text-foreground{{ else }}text-foreground/90{{ end }}">{{ $cell }}</td>{{ end }}
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    {{ end }}
+    <div class="text-center pt-4">
+      <a href="{{ $formURL }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition shadow-lg">{{ $c.ctaText }}</a>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+(function() {
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuBtn && mobileMenu) mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+})();
+</script>
+{{ end }}
