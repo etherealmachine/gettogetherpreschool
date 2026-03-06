@@ -11,7 +11,7 @@
 
 {{ define "main" }}
 <section class="py-6 px-4 sm:px-6 lg:px-8 bg-white border-b border-border">
-  <div class="max-w-6xl mx-auto">
+  <div class="max-w-6xl mx-auto space-y-4">
     <div class="rounded-2xl bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200/80 p-6 sm:p-8 shadow-md hover:shadow-lg hover:border-green-300 transition text-left">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -22,6 +22,19 @@
         </div>
         <div class="flex-shrink-0">
           <a href="{{ .Site.Params.springCampFormURL }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition">Register</a>
+        </div>
+      </div>
+    </div>
+    <div class="rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200/80 p-6 sm:p-8 shadow-md hover:shadow-lg hover:border-amber-300 transition text-left">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <p class="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-1">Registration open</p>
+          <a href="{{ "summer_camp/" | relURL }}" class="hover:opacity-90 transition"><h2 class="text-2xl sm:text-3xl font-bold text-foreground mb-2">2026 Mandarin-English Summer Camp ☀️</h2></a>
+          <p class="text-muted-foreground mb-2">June 8 – July 31, 2026 · Learn, play, and grow! Flexible weekly enrollment, small groups, bilingual fun. Limited spots.</p>
+          <a href="{{ "summer_camp/" | relURL }}" class="inline-flex items-center gap-1 text-orange-600 font-bold hover:underline">Learn More →</a>
+        </div>
+        <div class="flex-shrink-0">
+          <a href="{{ .Site.Params.defaultCampFormURL }}" target="_blank" rel="noopener noreferrer" class="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition">Register</a>
         </div>
       </div>
     </div>
