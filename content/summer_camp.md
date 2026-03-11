@@ -2,6 +2,7 @@
 title: "Summer Camp 2026"
 description: "GTP 2026 Mandarin-English Summer Camp. Learn, Play, and Grow! Ages 3-6. Flexible weekly enrollment June 8 – July 31 in San Jose."
 layout: camp
+formURL: "https://docs.google.com/forms/d/e/1FAIpQLSehAXeV5dssIcVy8yfYBtujtU5gB2o8g6NBAvthQHLY95XigA/viewform"
 camp:
   dateRange: "June 8 – July 31, 2026"
   heroTitle: "2026 Mandarin-English Summer Camp ☀️"
